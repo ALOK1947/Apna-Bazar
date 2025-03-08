@@ -15,7 +15,7 @@ export default function Shop() {
       {/* Filter Section (1 Column) */}
       <button
         onClick={() => setamount(!amount)}
-        className='fixed w-[194px] top-[140px] left-0 z-[30] p-2 bg-blue-500 text-white rounded-r-lg shadow-lg sm:hidden'
+        className='fixed w-[194px] top-[140px] left-0 z-[30] p-2 bg-orange-500 text-white rounded-r-lg shadow-lg sm:hidden'
       >
         {amount ? 'Hide Filter' : 'Show Filter'}
       </button>
