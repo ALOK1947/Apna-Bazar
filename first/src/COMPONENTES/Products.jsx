@@ -41,7 +41,7 @@ export default function Products({ rating, price }) {
 
   return (
     <div>
-      <h2 className='fixed right-0 bg-blue-500 text-white text-[18px] w-[150px] rounded p-3 z-30 flex-wrap flex-col top-36 sm:static'>Total items: {products.length}</h2>
+      <h2 className='fixed right-0 bg-green-700 text-white text-[18px] w-[150px] rounded p-2 z-30 flex-wrap flex-col top-[140px] sm:static'>Total items: {products.length}</h2>
       <div className="p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-9 mt-10">
         {products.map((productData, productIndex) => (
           loading ? (
@@ -61,8 +61,8 @@ export default function Products({ rating, price }) {
       </div>
       <button
         onClick={() => setlimit(limit + 10)}
-        className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
-        Load Items
+        className="bg-yellow-600 text-white m-7 py-2 px-4 rounded hover:bg-blue-700">
+        Load More 
       </button>
     </div>
   );
@@ -104,9 +104,16 @@ function ProductCards({ product }) {
           <p className="text-xl font-semibold text-green-600 mb-4">₹ {product.price}</p>
         </div>
       </Link>
-      <button onClick={addcard} className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
+      <div  className='flex justify-between p-2 pb-8'>
+      <button onClick={addcard} className="w-3/7 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
         Add to Cart
       </button>
+      <Link to={`/productDetails/${product.id}`}>
+      <button  className="w-3/7 bg-orange-600 text-white py-2 px-4 rounded hover:bg-orange-700">
+        Buy Now
+      </button>
+      </Link>
+      </div>
     </div>
   );
 }

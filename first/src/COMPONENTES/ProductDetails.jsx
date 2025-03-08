@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { context } from "../COMPONENTES/Context/Maincontext";
 
 export default function ProductDetails() {
+  const navigation=useNavigate();
   const { productId } = useParams();
   const [cproduct, setCproduct] = useState({});
    const { card, setcard, toast } = useContext(context);
@@ -44,6 +45,10 @@ export default function ProductDetails() {
      }
    };
 
+   const thanks=()=>{
+    navigation('/thanks');
+   }
+
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg grid grid-cols-1 md:grid-cols-2 gap-6">
   <div className="flex flex-col space-y-4">
@@ -74,10 +79,16 @@ export default function ProductDetails() {
     <p className="text-gray-700 mb-4">
       {cproduct.description}
     </p>
-    <button onClick={addcard} className="bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700">
+    <div className='flex justify-between  p-8'>
+    <button onClick={addcard} className="bg-blue-600 w-2/4 text-white py-3 px-4 rounded-lg hover:bg-blue-700">
       Add to Cart
     </button>
+    <button onClick={thanks} className="bg-orange-600 text-white py-3 px-4 rounded-lg w-/5 hover:bg-orange-700">
+      Buy Now
+    </button>
+    </div>
   </div>
+  
 </div>
 
   );

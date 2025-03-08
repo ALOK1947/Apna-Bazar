@@ -1,11 +1,12 @@
 import { createContext, useEffect, useState } from 'react';
 import React, { useContext } from 'react';
 import { context } from "../COMPONENTES/Context/Maincontext";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Card() { // Yeh Capital Case Me Likho
   const { card, setcard, toast } = useContext(context);
   const [totalprice, setprice]=useState(0);
+  const navigation=useNavigate();
   const getTotalPrice = ()=>{
     let total=0;
     card.forEach((cardData,cardIndex)=>{
@@ -19,6 +20,10 @@ export default function Card() { // Yeh Capital Case Me Likho
         getTotalPrice();
       },[card]
     )
+
+    const finish=()=>{
+      navigation('/thanks');
+    }
   return (
     <div>
             <div className="min-h-screen bg-gray-100 p-6 ">
@@ -59,7 +64,7 @@ export default function Card() { // Yeh Capital Case Me Likho
             <span>Total:</span>
             <span>₹{(totalprice + totalprice * 10 / 100).toFixed(2)}</span>
           </div>
-          <button className="mt-4 w-full bg-blue-500 text-white py-2 rounded-2xl hover:bg-blue-600">
+          <button onClick={finish} className="mt-4 w-full bg-blue-500 text-white py-2 rounded-2xl hover:bg-blue-600">
             Proceed to Checkout
           </button>
         </div>

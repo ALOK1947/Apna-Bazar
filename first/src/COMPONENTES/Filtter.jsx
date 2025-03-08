@@ -25,10 +25,10 @@ export default function Filtter({ setrating,rating,price,setprice }) {
 
 
   return (
-    <div className='h-screen' >
+    <div className='h-screen mt-8  sm:mt-0' >
       {/* Filter by Rating */}
       <div className="flex flex-col gap-2 p-4">
-      <h1 className="text-lg font-bold mt-11">Filter by Rating</h1>
+      <h1 className="text-xl font-bold text-blue-800 mb-3">⭐ Filter by Rating</h1>
         <button
           onClick={() => setrating(1)}
           className={`px-4 py-2 border-2 rounded-lg transition duration-300 ${
@@ -65,29 +65,33 @@ export default function Filtter({ setrating,rating,price,setprice }) {
 
 
       {/* Filter by price start  */}
-      <div className=" p-6 w-full max-w-sm mx-auto  my-4">
-      <h1 className="text-xl font-semibold text-center text-gray-700 mb-4">Filter by Price</h1>
-      <div className="flex justify-between items-center gap-4">
-        <input
-          onChange={(event) => setprice({ ...price, from: event.target.value })}
-          className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          type="number"
-          placeholder="From"
-        />
-        <span className="text-gray-500">to</span>
-        <input
-          onChange={(event) => setprice({ ...price, to: event.target.value })}
-          className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          type="number"
-          placeholder="To"
-        />
+      <div className="mb-6">
+        <h1 className="text-xl font-bold text-blue-800 mb-3">💰 Filter by Price</h1>
+        <div className="flex items-center space-x-3">
+          <input
+            type="number"
+            onChange={(e) => {
+              const newValue = e.target.value;
+              setprice(newValue > 1 ? { ...price, from: newValue } : { ...price, from: '1' });
+            }}
+            placeholder="From"
+            className="w-full p-2  border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50"
+          />
+          <span className="text-gray-700">to</span>
+          <input
+            type="number"
+            onChange={(e) => {
+              const newValue = e.target.value;
+              setprice(newValue > 1 ? { ...price, to: newValue } : { ...price, to: '1000' });
+            }}
+            placeholder="To"
+            className="w-full p-2 border border-blue-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50"
+          />
+        </div>
       </div>
-      
-    </div>
-     
 
       {/* Filter by Category */}
-      <h1 className="text-lg font-bold mb-4">Filter by Category</h1>
+      <h1 className="text-xl font-bold text-blue-800 mb-3">📦 Filter by Category</h1>
       <div className="p-4  gap-2  flex flex-col">
         <Link to="/shop">
           <div className={`p-2 rounded cursor-pointer ${slug==undefined ? 'bg-blue-600 text-white' : 'border border-blue-500'}`}>

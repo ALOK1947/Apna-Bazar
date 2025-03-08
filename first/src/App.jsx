@@ -10,6 +10,7 @@ import Maincontext from "./COMPONENTES/Context/Maincontext";
 import Contact from './PAGES/Contact';
 import Login from './PAGES/Login';
 import Register from './PAGES/Register';
+import Thanks from './PAGES/Thanks';
 
 export default function App() {
          const route = createBrowserRouter([
@@ -49,6 +50,10 @@ export default function App() {
                    path: '/register',
                    element: <Register/>
               },
+              {
+               path:'/thanks',
+               element:<Thanks/>
+              }
               
               ]
          }
